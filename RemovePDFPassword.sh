@@ -49,33 +49,33 @@ echo "This script will decrypt all the encrypted PDF documents in the provided d
 echo -n "Enter the full path where your encrypted PDF documents are stored..."
 read ANSWER
 echo "You provided $ANSWER as the path. Performing magic there! ;-) But before that, lets see if this directory contains any PDF files or not."
-isEmpty=`ls -lh "$ANSWER" | wc -l`
-numPDFfiles=`cd "$ANSWER"; shopt -s nullglob; for ext in pdf; do files=( *."$ext" ); printf 'Number of %s files: %d\n' "$ext" "${#files[@]}"; done | awk '{print $5}'`
+if [ ! -d "$ANSWER" ];
+then
+  echo "Oops!! $ANSWER does not seem to be a correct directory. Please ensure the correctness of your directory & run the script again! Exiting now..."
+  exit
+fi
 
-if [[ $isEmpty -eq 0 ]]; then
+isDIREmpty=`ls -lh "$ANSWER" | wc -l`
+if [[ $isDIREmpty -eq 0 ]]; then
   echo "Looks like $ANSWER is empty & does not contain any file at all. Exiting now..."
   exit
 fi
 
+numPDFfiles=`cd "$ANSWER"; shopt -s nullglob; for ext in pdf; do files=( *."$ext" ); printf 'Number of %s files: %d\n' "$ext" "${#files[@]}"; done | awk '{print $5}'`
 if [ -d "$ANSWER" ] && [ $numPDFfiles -eq 0 ]; then
   echo "There appears to be ZERO PDF files in $ANSWER. There is nothing to decrypt! Exiting now..."
   exit
 fi
 
-if [ -d "$ANSWER" ];
+cd $ANSWER
+shopt -s nullglob;
+for ext in pdf; do files=( *."$ext" ); printf 'Number of %s files: %d\n' "$ext" "${#files[@]}"; done
+echo "Your original files won't be touched. New decrypted files will be created in directory : - ${HOME}/Decrypted_PDF_Documents."
+if [ -d ${HOME}/Decrypted_PDF_Documents ]
 then
-  cd $ANSWER
-  shopt -s nullglob;
-  for ext in pdf; do files=( *."$ext" ); printf 'Number of %s files: %d\n' "$ext" "${#files[@]}"; done
-  echo "Your original files won't be touched. New decrypted files will be created in directory : - ${HOME}/Decrypted_PDF_Documents."
-  if [ -d ${HOME}/Decrypted_PDF_Documents ]
-  then
-    echo "Directory ${HOME}/Decrypted_PDF_Documents already exists, hence not creating it!"
-  else
-    mkdir ${HOME}/Decrypted_PDF_Documents
-  fi
-  for f in *; do [[ -d "$f" ]] || qpdf --password=PASSWORD --decrypt "$f" "${HOME}/Decrypted_PDF_Documents/$f-UNSECURED.pdf"; done
-  echo "Success!! You can now navigate to ${HOME}/Decrypted_PDF_Documents directory to access your PDF documents without having to enter passwords :-)"
+  echo "Directory ${HOME}/Decrypted_PDF_Documents already exists, hence not creating it!"
 else
-  echo "Oops!! $ANSWER does not seem to be a correct directory. Please ensure the correctness of your directory & run the script again!"
+  mkdir ${HOME}/Decrypted_PDF_Documents
 fi
+for f in *; do [[ -d "$f" ]] || qpdf --password=PASSWORD --decrypt "$f" "${HOME}/Decrypted_PDF_Documents/$f-UNSECURED.pdf"; done
+echo "Success!! You can now navigate to ${HOME}/Decrypted_PDF_Documents directory to access your PDF documents without having to enter passwords :-)"
