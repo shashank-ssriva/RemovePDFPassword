@@ -26,6 +26,8 @@ Then, execute the script. Its that easy!! This script takes care of installing t
 
 ## Script In Action.
 
+__On Ubuntu : -__
+
 ```bash
 root@development-server /h/s/Shell Scripts# ./removePasswordPDF.sh 
 Detecting OS of your machine...
