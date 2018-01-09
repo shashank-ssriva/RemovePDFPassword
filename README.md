@@ -17,7 +17,7 @@ Clone or download the repository & make the shell script executable.
 ```bash
 chmod +x RemovePDFPassword.sh
 ```
-After this, change the line #77 & replace the password for your documents there.
+After this, change the line [#77](https://github.com/shashank-ssriva/RemovePDFPassword/blob/ac5150d79929c7e0f3cf6a53696ca1c42681325a/RemovePDFPassword.sh#L77) & replace the password for your documents there.
 
 ``--password=DOCUMENT_PASSWORD``
 
