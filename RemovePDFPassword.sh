@@ -78,4 +78,9 @@ else
   mkdir ${HOME}/Decrypted_PDF_Documents
 fi
 for f in *; do [[ -d "$f" ]] || qpdf --password=PASSWORD --decrypt "$f" "${HOME}/Decrypted_PDF_Documents/$f-UNSECURED.pdf"; done
-echo "Success!! You can now navigate to ${HOME}/Decrypted_PDF_Documents directory to access your PDF documents without having to enter passwords :-)"
+if [[ $? -eq 0 ]]; then
+  echo "Success!! You can now navigate to ${HOME}/Decrypted_PDF_Documents directory to access your PDF documents without having to enter passwords :-)"
+else
+  echo "Error!! Wrong password provided. Please specify the correct password & try again! Exiting now..."
+  exit
+fi
