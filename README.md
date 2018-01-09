@@ -4,7 +4,7 @@ A Bash shell script to decrypt all the encrypted PDF documents in the provided d
 ## Introduction.
 
 Most of the bank & investment statements are password protected so you have to enter a password every time you need to open the document. While it is great for security purpose, entering password becomes really irritating when you have to do it again & again & again. Worst part is, you may even forget the password & hence you simply can't access those documents without investing some time.
-RemovePDFPassword decrypts your secured PDF documents & copies them to a different directory where you can easily access them without entering the password. It works on a given directory, so it can very quickly decrypt the entire directory before you even get the chance to blink your eyes! It works well when you have placed all those statements related to a particular bank or investment company inside a particular folder. For example, you can keep all your Axis bank statements in a folder & RemovePDFPassword will quickly decrypt all the files inside it & copy them to a different location. Your original documemts remain untouched.
+``RemovePDFPassword`` decrypts your secured PDF documents & copies them to a different directory where you can easily access them without entering the password. It works on a given directory, so it can very quickly decrypt the entire directory before you even get the chance to blink your eyes! It works well when you have placed all those statements related to a particular bank or investment company inside a particular folder. For example, you can keep all your Axis bank statements in a folder & ``RemovePDFPassword`` will quickly decrypt all the files inside it & copy them to a different location. Your original documemts remain untouched.
 This utility comes in 2 flavours. One has the password hard-coded for convenience, which means the script won't ask for password while executing. This is ideal for situations where you have a large number of files inside a single folder. Second version prompts for the password, so it is ideal for the cases where you have multiple directories & you don't want to edit the script everytime.
 
 ## Best Practices.
@@ -22,7 +22,7 @@ After this, change the line [#77](https://github.com/shashank-ssriva/RemovePDFPa
 
 ``--password=DOCUMENT_PASSWORD``
 
-Then, execute the script. Its that easy!! This script takes care of installing the required QPDF library on the basis of your OS (*which it detects automatically*) & also validates the empty directory, non-existent directory or the directories that don't have any PDF files inside.
+Then, execute the script. Its that easy!! This script takes care of installing the required QPDF library on the basis of your OS (*which it detects automatically*) & also validates the password, empty directory, non-existent directory or the directories that don't have any PDF files inside.
 
 ## Script In Action.
 
