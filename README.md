@@ -92,7 +92,7 @@ Looks like /home/shashank/encrypted_PDF is empty & does not contain any file at 
 ```
 __On Mac : -__
 
-Empty Directory
+*Empty Directory*
 
 ```bash
 admin@shashank-mbp ~/D/Shell Scripts> ./removePasswordPDF.sh
@@ -109,7 +109,7 @@ Enter the full path where your encrypted PDF documents are stored.../Users/admin
 You provided /Users/admin/Desktop/test as the path. Performing magic there! ;-) But before that, lets see if this directory contains any PDF files or not.
 Looks like /Users/admin/Desktop/test is empty & does not contain any file at all. Exiting now...
 ```
-No PDF file inside directory
+*No PDF file inside directory*
 ```bash
 admin@shashank-mbp ~/D/Shell Scripts> ./removePasswordPDF.sh
 Detecting OS of your machine...
@@ -125,7 +125,7 @@ Enter the full path where your encrypted PDF documents are stored.../Users/admin
 You provided /Users/admin/Desktop/wls_test as the path. Performing magic there! ;-) But before that, lets see if this directory contains any PDF files or not.
 There appears to be ZERO PDF files in /Users/admin/Desktop/wls_test. There is nothing to decrypt! Exiting now...
 ```
-Valid directory with PDF files
+*Valid directory with PDF files*
 ```bash
 admin@shashank-mbp ~/D/Shell Scripts> ./removePasswordPDF.sh
 Detecting OS of your machine...
